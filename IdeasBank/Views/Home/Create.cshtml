@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" media="all" />
+    <link href="@Url.Content("~/Content/create_style.css")" rel="stylesheet" type="text/css" media="all" />
+    @Styles.Render("~/Content/css")
+    <title>Створити ідею</title>
+</head>
+<body>
+    <div class="main-menu">
+        <div class="left">
+            <div class="menu-item logo"><a href=""></a></div>
+            <div class="menu-item"><a href="">Майстерня</a></div>
+            <div class="menu-item"><a href="">Музей</a></div>
+            <div class="menu-item"><a href="">Цвинтар</a></div>
+        </div>
+        <div class="right">
+            <div class="menu-item"><a href="" class="search"></a></div>
+            <div class="menu-item"><a href="" class="profile"></a></div>
+        </div>
+    </div>
+    <div class="create_panel">
+        <input type="text" placeholder="Назва" class="name_input"><br>
+        <textarea placeholder="Опис iдеi" class="text_input" rows="3"></textarea><br>
+        <div class="add_image">
+            <div class="add_label">
+                <img></img>
+                <span>Додати зображення</span>
+            </div>
+        </div>
+        <input type="text" placeholder="Теги" class="tag_input"><br>
+    </div>
+    <div class="advices">
+        <ul>
+            <li>Хех</li>
+            <li>Мда</li>
+            <li>Уж</li>
+            <li>Мем</li>
+        </ul>
+    </div>
+    <div class="create">
+        <div class="create_but">Створити</div>
+    </div>
+</body>
+</html>
