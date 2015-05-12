@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,6 @@ namespace IdeasBank.Models
 
         public int IdeaId { get; set; }
 
-        public byte[] PhotoByte { get; set; }
+        public string PhotoLink { get; set; }
     }
 }

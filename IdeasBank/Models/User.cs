@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -12,5 +13,10 @@ namespace IdeasBank.Models
         public string Name { get; set; }
 
         public string Email { get; set; }
+
+        public string LoginType { get; set; }
+
+        public int InsideServiceId { get; set; }
     }
+
 }
