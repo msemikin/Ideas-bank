@@ -13,11 +13,9 @@ namespace IdeasBank.Controllers
         [HttpGet]
         public JsonResult GetPage(int pageNumber, int pageSize)
         {
-
             IdeasBankEntities db = new IdeasBankEntities();
-
-            var page = db.Ideas.ToList();//.Skip(pageNumber * pageSize)
-                    //.Take(pageSize);
+            var page = db.Ideas.ToList().Skip(pageNumber * pageSize)
+                    .Take(pageSize);
 
             db.Dispose();
             return Json(page, JsonRequestBehavior.AllowGet);
