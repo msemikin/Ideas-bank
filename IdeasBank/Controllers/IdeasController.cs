@@ -13,17 +13,20 @@ namespace IdeasBank.Controllers
         [HttpGet]
         public JsonResult GetPage(int pageNumber, int pageSize)
         {
-            IdeasBankDbContext db = new IdeasBankDbContext();
-            var page = db.Ideas.Skip(pageNumber * pageSize)
-                    .Take(pageSize);
+
+            IdeasBankEntities db = new IdeasBankEntities();
+
+            var page = db.Ideas.ToList();//.Skip(pageNumber * pageSize)
+                    //.Take(pageSize);
+
             db.Dispose();
-            return Json(page);
+            return Json(page, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public JsonResult Create(Idea idea)
         {
-            IdeasBankDbContext db = new IdeasBankDbContext();
+            IdeasBankEntities db = new IdeasBankEntities();
             db.Ideas.Add(idea);
             db.SaveChanges();
             db.Dispose();
