@@ -1,0 +1,104 @@
+html, body{
+    margin:0;
+    padding:0;
+}
+body{
+    padding:10px;
+    color:rgb(123,123,123);
+    font-family:Arial, sans-serif;
+    font-size:0px;
+    line-height:1.4;
+    background:#ecf0f1;
+    text-align:center;
+}
+.create_panel{
+    display: inline-block;
+    background:white;
+    width:1200px;
+    min-height: 30px;
+    margin: 15px 0;
+    text-align: left;
+    border-bottom:3px solid #7B7B7B;
+
+}
+.name_input{
+    border:0;
+    font-weight: bold;
+    padding:5px 15px;
+    outline-width: 0;
+    margin-top: 10px;
+    padding-bottom: 0px;
+    font-size: 16px;
+}
+.text_input{
+    border: none;
+    border-color: Transparent; 
+    overflow: auto;
+    width:760px;
+    padding:5px 15px;
+    outline-width: 0;
+    resize: none;
+    padding-top: 0px;
+        font-size: 16px;
+}
+.tag_input{
+    border:0;
+    padding:5px 15px;
+    outline-width: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.add_image{
+    height:50px;
+    margin: 5px 15px;
+    border: 2px dashed rgb(123,123,123);
+    text-align: center;
+    
+}
+.add_label{
+    display:inline-block;
+    font-size: 16px;
+    margin-top: 12px;
+    font-weight: bold;
+    text-align: center;
+    
+}
+.add_image span{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+}
+.add_image img{
+    width:30px;
+    height:30px;
+    display: inline-block;
+
+}
+.advices{
+    display: inline-block;
+    background:white;
+    width:1200px;
+    min-height: 30px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size:14px;
+    border-bottom:3px solid #7B7B7B;
+    font-weight: bold;
+}
+.create{
+    display: inline-block;
+    width:1200px;
+    text-align:right;
+}
+.create_but{
+    display: inline-block;
+    background: blue;
+    font-size:20px;
+    padding:5px 15px;
+    color:white;
+    background-color:#4285F6;
+    border:1px solid #7B7B7B;
+    border-bottom:2px solid #7B7B7B;
+    box-shadow:1px 1px 3px #999;
+    border-radius:3px;
+}
