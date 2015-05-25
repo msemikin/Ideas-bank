@@ -25,8 +25,16 @@
             <div class="menu-item"><a href="" class="profile"></a></div>
         </div>
     </div>
+
+    <div>
+        @Html.BeginForm("_SumbitIdea", "Home", FormMethod.Post) {
+            @Html.AntiForgeryToken()
+            @Html.Action("_CreateIdea", new { userId = ViewBag.UserId })   
+        }
+    </div>
+
     <div class="create_panel">
-        <input type="text" placeholder="Назва" class="name_input"><br>
+        <input type="text" placeholder="Назва"class="name_input"><br>
         <textarea placeholder="Опис iдеi" class="text_input" rows="3"></textarea><br>
         <div class="add_image">
             <div class="add_label">
