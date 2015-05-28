@@ -11,12 +11,15 @@ namespace IdeasBank.Controllers
     public class IdeasController : Controller
     {
         [HttpGet]
-        public JsonResult GetPage(int pageNumber = 1, int pageSize = 3)
+        public JsonResult GetPage(int pageNumber = 1, int pageSize = 3, bool freeAllowed= true, bool assignedAllowed = true)
         {
             try
             {
+                string free = freeAllowed ? "" : "Не выполняется";
+                string assigned = assignedAllowed ? "" : "Выполняется";
                 IdeasBankEntities db = new IdeasBankEntities();
                 var page = db.Ideas.OrderBy((a) => a.Id)
+                        //.Where((a) => a.Status.Contains(freeAllowed))
                         .Skip((pageNumber - 1) * pageSize)
                         .Take(pageSize);
                 return Json(page, JsonRequestBehavior.AllowGet);
