@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,20 +133,51 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BankDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Comments.cs">
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Idea.cs" />
+    <Compile Include="Models\Ideas.cs">
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdeasBankDbContext.cs" />
     <Compile Include="Models\Like.cs" />
+    <Compile Include="Models\Likes.cs">
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\Photos.cs">
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Subscribe.cs" />
+    <Compile Include="Models\Subscribes.cs">
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>BankDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\IdeasBank.mdf" />
-    <Content Include="App_Data\IdeasBank_log.ldf">
-      <DependentUpon>IdeasBank.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\IdeasBank_log.ldf" />
     <Content Include="Content\create_style.css" />
     <Content Include="Content\list_style.css" />
     <Content Include="Content\menu.css" />
@@ -204,6 +237,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\BankDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BankDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BankDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankDataModel.edmx</DependentUpon>
+      <LastGenOutput>BankDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BankDataModel.edmx.diagram">
+      <DependentUpon>BankDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BankDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankDataModel.edmx</DependentUpon>
+      <LastGenOutput>BankDataModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\arrow-left.png" />
     <Content Include="Images\arrow-left1.png" />
@@ -231,7 +281,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -245,10 +297,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

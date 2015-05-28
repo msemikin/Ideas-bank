@@ -6,10 +6,9 @@ using System.Web;
 
 namespace IdeasBank.Models
 {
-    public class Like
+    public partial class Like
     {
-        public int IdeaId { get; set; }
-
         public int AuthorId { get; set; }
+        public int IdeaId { get; set; }
     }
 }

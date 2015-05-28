@@ -6,18 +6,13 @@ using System.Data.Entity;
 
 namespace IdeasBank.Models
 {
-    public class Comment
+    public partial class Comment
     {
         public int Id { get; set; }
-
-        public int AuthorId { get; set; }
-
-        public DateTime CreationDate { get; set; }
-
-        public int IdeaId { get; set; }
-
+        public Nullable<int> AuthorId { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<int> IdeaId { get; set; }
         public string Text { get; set; }
-
         public string ImplementationInfo { get; set; }
     }
 }

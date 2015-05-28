@@ -6,12 +6,10 @@ using System.Web;
 
 namespace IdeasBank.Models
 {
-    public class Photo
+    public partial class Photo
     {
         public int Id { get; set; }
-
-        public int IdeaId { get; set; }
-
+        public Nullable<int> IdeaId { get; set; }
         public string PhotoLink { get; set; }
     }
 }

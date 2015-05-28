@@ -6,19 +6,13 @@ using System.Web;
 
 namespace IdeasBank.Models
 {
-    public class Idea
+    public partial class Idea
     {
         public int Id { get; set; }
-
         public string Name { get; set; }
-
-        public string Descriprion { get; set; }
-
-        public int AuthorId { get; set; }
-
-        public DateTime Date { get; set; }
-
+        public string Description { get; set; }
+        public Nullable<int> AuthorId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public string Status { get; set; }
-
     }
 }
