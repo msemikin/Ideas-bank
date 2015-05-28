@@ -12,6 +12,7 @@ body {
     line-height: 1.4;
     background: #ecf0f1;
     text-align: center;
+
 }
 
 .navigator {
@@ -46,7 +47,18 @@ body {
     background-color: white;
     padding: 4px 20px;
 }
-
+.check-item{
+    display: inline-block;
+    text-align: center;
+    font-size: 19px;
+    padding: 4px 20px;
+    border-bottom: 1px solid #7B7B7B;
+    box-shadow: 1px 1px 3px #999;
+    background-color: white;
+}
+.check-item:nth-child(2){
+    margin-right: 200px;
+}
 .nav-item a {
     color: rgba(0,0,0,.8);
 }
@@ -81,7 +93,7 @@ body {
 }
 
 .navigator .right {
-    border-bottom: 1px solid #7B7B7B;
+
 }
 
 .active {
