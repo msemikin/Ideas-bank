@@ -16,8 +16,8 @@ namespace IdeasBank.Controllers
         {
             try
             {
-                string free = freeAllowed ? "Не выполняется" : "";
-                string assigned = assignedAllowed ? "Выполняется" : "";
+                string free = freeAllowed ? "Free" : "";
+                string assigned = assignedAllowed ? "Assigned" : "";
 
                 IdeasBankEntities db = new IdeasBankEntities();
 
