@@ -43,7 +43,7 @@ namespace IdeasBank.Controllers
             IdeasBankEntities db = new IdeasBankEntities();
             idea.Id = db.Ideas.Count();
             idea.Date = DateTime.Now;
-            idea.Status = "Не выполняется";
+            idea.Status = "Free";
             db.Ideas.Add(idea);
             db.SaveChanges();
             db.Dispose();
