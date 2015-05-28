@@ -11,24 +11,34 @@ namespace IdeasBank.Controllers
     public class IdeasController : Controller
     {
         [HttpGet]
-        public JsonResult GetPage(int pageNumber, int pageSize)
+        public JsonResult GetPage(int pageNumber = 1, int pageSize = 3)
         {
-            IdeasBankEntities db = new IdeasBankEntities();
-            var page = db.Ideas.ToList().Skip(pageNumber * pageSize)
-                    .Take(pageSize);
+            try
+            {
+                IdeasBankEntities db = new IdeasBankEntities();
+                var page = db.Ideas.OrderBy((a) => a.Id)
+                        .Skip((pageNumber - 1) * pageSize)
+                        .Take(pageSize);
+                return Json(page, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(e.ToString(), JsonRequestBehavior.AllowGet);
+            }
 
-            db.Dispose();
-            return Json(page, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult Create(Idea idea)
+        public ActionResult Create(Ideas idea)
         {
             IdeasBankEntities db = new IdeasBankEntities();
+            idea.Id = db.Ideas.Count();
+            idea.Date = DateTime.Now;
+            idea.Status = "Не выполняется";
             db.Ideas.Add(idea);
             db.SaveChanges();
             db.Dispose();
-            return Json("success");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
