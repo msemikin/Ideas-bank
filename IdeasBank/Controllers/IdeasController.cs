@@ -29,13 +29,16 @@ namespace IdeasBank.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Ideas idea)
+        public ActionResult Create(Ideas idea)
         {
             IdeasBankEntities db = new IdeasBankEntities();
+            idea.Id = db.Ideas.Count();
+            idea.Date = DateTime.Now;
+            idea.Status = "Не выполняется";
             db.Ideas.Add(idea);
             db.SaveChanges();
             db.Dispose();
-            return Json("success");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
