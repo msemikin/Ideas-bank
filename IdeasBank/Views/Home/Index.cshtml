@@ -5,28 +5,39 @@
 <!DOCTYPE html>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
 <script>
+
+
     function fillWithData(data) {
+        $(".table").empty();
         var width = $(window).width();
         var cardWidth = 250;
         var borderWidth = 50;
-        //var heights = [200,300,200,200,300,300,200,200,300,200];
         var n = data.length;
         for (var i = 0; i < n; i++) {
             var content = "<div id='idea" + i + "' class = 'idea'></div>";
             var $ideaDiv = $(content);
-            $("#idea"+i).hide();
+            $("#idea" + i).hide();
             //alert(content);
             $(".table").append($ideaDiv);
-            //$("#idea"  i).height(heights[i]);
 
-            content = "<div class = 'image-panel'>" +  i  + "</div>";
+            content = "<div class = 'image-panel'>";
+            content = content.concat("<a class='status-panel'  id = 'status" + i + "'>");
+            content = content.concat(data[i].Status);
+            content = content.concat("</a>");
+            content = content.concat("</div>");
+            content = content.concat("<h3>");
+            "</div>";
 
 
             var $imageDiv = $(content);
             $("#idea" + i).append($imageDiv);
 
+            if (data[i].Status == 'Assigned                                                                                            ') {
+                var str = '#status' + i;
+                $(str).css("background-color", "#FFE4B5");
+                $(str).css("color", "black");
+            }
 
             content = "<div class = 'text-panel'>";
             //var namee = "<h3>".data[i].Name;
@@ -43,22 +54,30 @@
             content = content.concat("<mark>#tag1, #tag2</mark>");
             var $tagDiv = $(content);
             $("#idea" + i).append($tagDiv);
+
         }
     }
+    f();
 
-    $(function f() {
+    function f() {
+        var freeAll = $("#secondCheck").prop("checked");
+        var assAll = $('#first').prop("checked");
         $.ajax({
             type: "GET",
             url: 'http://ideasbank.somee.com/Ideas/GetPage/',
-            data:{pageNumber:1, pageSize:10},
-            async:true,
-            dataType : 'json',   //you may use jsonp for cross origin request
-            crossDomain:true,
-            success: function(data) {
+            data: { pageNumber: 1, pageSize: 100, assignedAllowed: assAll, freeAllowed: freeAll },
+            async: true,
+            dataType: 'json',   //you may use jsonp for cross origin request
+            crossDomain: true,
+            success: function (data) {
                 fillWithData(data);
             }
         });
-    });
+    }
+
+    function changing() {
+        f();
+    }
 
 </script>
 
@@ -90,10 +109,6 @@
             </div>
         </div>
         <div class="right">
-		   <div class="check-item"><input type="checkbox" checked>Выполняется
-            </div>
-            <div class="check-item"><input type="checkbox" checked>Не выполняется
-            </div>
             <div class="menu-item">
                 <a href="" class="search"></a>
             </div>
@@ -109,6 +124,12 @@
             </div>
         </div>
         <div class="right">
+            <div class="check-item">
+                <input type="checkbox" id="firstCheck" onchange='changing()' checked> Выполняемые
+            </div>
+            <div class="check-item">
+                <input type="checkbox" id="secondCheck" onchange='changing()' checked> Не выполняемые
+            </div>
             <div class="nav-item active">
                 <a href="">Нові</a>
             </div>
@@ -122,5 +143,6 @@
     </div>
     <div class="table">
     </div>
+
 </body>
 </html>
