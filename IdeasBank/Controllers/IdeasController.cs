@@ -16,15 +16,15 @@ namespace IdeasBank.Controllers
         {
             try
             {
-                string free = freeAllowed ? "Free" : "";
-                string assigned = assignedAllowed ? "Assigned" : "";
+                string free = freeAllowed ? "Free" : "xxx";
+                string assigned = assignedAllowed ? "Assigned" : "xxx";
 
                 IdeasBankEntities db = new IdeasBankEntities();
 
-                IEnumerable<Ideas> page = db.Ideas.Where((a) => a.Status.Equals(free));
-                page.Union(db.Ideas.Where((a) => a.Status.Equals(assigned)));
+                IEnumerable<Ideas> page = db.Ideas.Where((a) => a.Status.Contains(free));
+                page = page.Union(db.Ideas.Where((a) => a.Status.Contains(assigned)));
 
-                page.OrderBy((a) => a.Id)
+                page = page.OrderBy((a) => a.Id)
                         .Skip((pageNumber - 1) * pageSize)
                         .Take(pageSize);
 
