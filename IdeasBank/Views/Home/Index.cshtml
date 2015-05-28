@@ -4,6 +4,64 @@
 
 <!DOCTYPE html>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<script>
+    function fillWithData(data) {
+        var width = $(window).width();
+        var cardWidth = 250;
+        var borderWidth = 50;
+        //var heights = [200,300,200,200,300,300,200,200,300,200];
+        var n = data.length;
+        for (var i = 0; i < n; i) {
+            var content = "<div id='idea" + i + "' class = 'idea'></div>";
+            var $ideaDiv = $(content);
+            $("#idea"+i).hide();
+            //alert(content);
+            $(".table").append($ideaDiv);
+            //$("#idea"  i).height(heights[i]);
+
+            content = "<div class = 'image-panel'>" +  i  + "</div>";
+
+
+            var $imageDiv = $(content);
+            $("#idea" + i).append($imageDiv);
+
+
+            content = "<div class = 'text-panel'>";
+            //var namee = "<h3>".data[i].Name;
+            content = content.concat("<h3>");
+            content = content.concat(data[i].Name);
+            content = content.concat("</h3>");
+            content = content.concat("<p>");
+            content = content.concat(data[i].Description);
+            content = content.concat("</p>");
+            var $textDiv = $(content);
+            $("#idea" + i).append($textDiv);
+
+            content = "<div class = 'tag-panel'>";
+            content = content.concat("<mark>#tag1, #tag2</mark>");
+            var $tagDiv = $(content);
+            $("#idea" + i).append($tagDiv);
+        }
+    }
+
+    $(function f() {
+        $.ajax({
+            type: "GET",
+            url: 'http://ideasbank.somee.com/Ideas/GetPage/',
+            data:{pageNumber:1, pageSize:10},
+            async:true,
+            dataType : 'json',   //you may use jsonp for cross origin request
+            crossDomain:true,
+            success: function(data) {
+                fillWithData(data);
+            }
+        });
+    });
+
+</script>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -14,6 +72,7 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic")
 </head>
+
 <body>
     <div class="main-menu">
         <div class="left">
@@ -42,7 +101,7 @@
     <div class="navigator">
         <div class="left">
             <div class="create-item">
-                @Html.ActionLink("Створити ідею", "Create", "Home");
+                @Html.ActionLink("Створити ідею", "Create", "Home")
             </div>
         </div>
         <div class="right">
@@ -58,85 +117,6 @@
         </div>
     </div>
     <div class="table">
-        <div class="column">
-            <div class="idea" style="border-top-color: #26a65b">
-                <div class="image-panel">
-                    <div class="info-panel">
-                        <span class="like-count">
-                            72
-                            <span class="like-panel" href="">+</span>
-                        </span>
-                        <span class="status-panel">Status</span>
-                    </div>
-                </div>
-                <div class="text-panel">
-                    <h3>Идея</h3>
-                    <p>dsjfhdsfjksdjfksdjfksdjfkdsjfksdjfksjfsjfkdsjfk</p>
-                </div>
-                <div class="tag-panel">
-                    # Tag1 Tag2
-                </div>
-            </div>
-            <div class="idea" style="border-top-color: #9b59b6">
-                <div class="image-panel">
-                    <div class="info-panel">
-                        <span class="like-count">
-                            72
-                            <span class="like-panel" href="">+</span>
-                        </span>
-                        <span class="status-panel">Status</span>
-                    </div>
-                </div>
-                <div class="text-panel">
-                    <h3>Идея</h3>
-                    <p>dsjfhdsfjksdjfksdjfksdjfkdsjfksdjfksjfsjfkdsjfk</p>
-                </div>
-                <div class="tag-panel">
-                    # Tag1 Tag2
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="idea" style="border-top-color: #f64747">
-                <div class="image-panel">
-                    <div class="info-panel">
-                        <span class="like-count">
-                            72
-                            <span class="like-panel" href="">+</span>
-                        </span>
-                        <span class="status-panel">Status</span>
-                    </div>
-                </div>
-                <div class="text-panel">
-                    <h3>Идея</h3>
-                    <p>dsjfhdsfjksdjfksdjfksdjfkdsjfksdjfksjfsjfkdsjfk</p>
-                </div>
-                <div class="tag-panel">
-                    # Tag1 Tag2
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="idea" style="border-top-color: #663399">
-                >
-                <div class="image-panel">
-                    <div class="info-panel">
-                        <span class="like-count">
-                            72
-                            <span class="like-panel" href="">+</span>
-                        </span>
-                        <span class="status-panel">Status</span>
-                    </div>
-                </div>
-                <div class="text-panel">
-                    <h3>Идея</h3>
-                    <p>dsjfhdsfjksdjfksdjfksdjfkdsjfksdjfksjfsjfkdsjfkfgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
-                </div>
-                <div class="tag-panel">
-                    # Tag1 Tag2
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>
