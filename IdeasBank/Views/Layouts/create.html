@@ -12,24 +12,25 @@
 			<div class="menu-item logo"><a href=""></a></div>
             <div class="menu-item"><a href="">Майстерня</a></div>
             <div class="menu-item"><a href="">Музей</a></div>
-            <div class="menu-item"><a href="">Цвинтар</a></div>
+            <div class="menu-item"><a href="">Кладовище</a></div>
 		</div>
 		<div class ="right">
 			<div class="menu-item"><a href="" class="search"></a></div>
 			<div class="menu-item"><a href="" class="profile"></a></div>
 		</div>
 	</div>
-        <div class="create_panel">
-            <input type="text" placeholder="Назва" class="name_input"><br>
-<textarea placeholder="Опис iдеi" class="text_input" rows="3"></textarea><br>
+        <form name="create" id="create" class="create_panel" method="post" action="/Ideas/Create">
+            <input type="text" placeholder="Назва" class="name_input" name="Name" id="Name"><br>
+            <textarea placeholder="Опис ідеї" class="text_input" rows="3" name="Description" id="Description"></textarea><br>
             <div class="add_image">
                 <div class="add_label">
                     <img></img>
                 <span>Додати зображення</span>
                 </div>
             </div>
-            <input type="text" placeholder="Теги" class="tag_input"><br>
-        </div>
+            <input type="text" placeholder="Теги" class="tag_input" name="Tags" id="Tags"><br>
+            <input type="hidden" name="AuthorId" id="AuthorId">
+        </form>
         <div class="advices">
             <ul>
                 <li>Хех</li>
@@ -39,6 +40,6 @@
             </ul>
         </div>
         <div class="create">
-            <div class="create_but">Створити</div>
+            <button type="submit" class="create_but" form="create">Створити</button>
         </div>
         
