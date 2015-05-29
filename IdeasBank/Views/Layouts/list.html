@@ -15,6 +15,15 @@ header('Access-Control-Allow-Origin: *');
 		
 		
         function fillWithData(data){
+		var pics = {};
+		pics[0] = 'http://relaxic.net/wp-content/uploads/2012/07/nature_00001.jpg';
+		pics[1] = 'http://babaevfoto.com/wp-content/uploads/2014/03/10.jpg';
+		pics[2] = 'http://img1.liveinternet.ru/images/attach/c/2//72/591/72591878_1265571599_nature_24.jpg';
+		pics[3] = 'http://bigpicture.ru/wp-content/uploads/2011/08/nature03.jpg';
+		pics[4] = 'http://byaki.net/uploads/posts/2010-12/1291329845_photos_of_nature_14.jpg'
+		
+		
+		
 			$( ".table" ).empty();
 		var width = $(window).width();
 			var cardWidth = 250;
@@ -27,7 +36,7 @@ header('Access-Control-Allow-Origin: *');
 				//alert(content);
 				$(".table").append($ideaDiv);
 				
-				content = "<div class = 'image-panel'>";
+				content = "<div class = 'image-panel' id = 'image"+i + "'>";
 				content = content.concat("<a class='status-panel'  id = 'status" + i + "'>");
 				content = content.concat(data[i].Status);
 
@@ -63,6 +72,10 @@ header('Access-Control-Allow-Origin: *');
 				var $tagDiv = $(content);
 				$("#idea" + i).append($tagDiv);
 				
+				var s = "transparent url('" + pics[i%4]+ "')no-repeat scroll 0% 0% / cover";
+				console.log(s);
+				
+				$("#image"+i).css("background", s);
 			}
         }
 		f();
